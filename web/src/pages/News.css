@@ -1,0 +1,6 @@
+td {
+  padding-left: 50px;
+}
+.tableClick :hover {
+  cursor: pointer;
+}

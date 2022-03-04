@@ -1,0 +1,89 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  outline: 0;
+  box-sizing: border-box;
+  font-family: 'Roboto', Arial, Helvetica, sans-serif;
+
+}
+
+html, body, #root {
+  min-height: 100%;
+  overflow-x: hidden
+}
+
+body {
+  -webkit-font-smoothing: antialiased !important;
+}
+
+body, input, button {
+  font-family: 'Roboto', Arial, Helvetica, sans-serif;
+  font-size: 16px;
+}
+
+.pageContainer {
+  display: flex;
+  margin: 0 auto;
+  min-height: 100%;
+  align-items: center;
+  justify-content: center;
+  align-self: flex-end;
+  background-color: #E5EAF0;
+  margin-left: 250px;
+  transition: 200ms
+}
+
+.pageContainer.expanded {
+  margin-right: 0;
+  margin-left: 80px;
+  transition: 200ms
+}
+
+.pageContent {
+  min-height: 100%;
+  width: 92%;
+  margin: 120px 0 120px;
+  background-color: #fff;
+  border-radius: 4px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+/* ScrollBar */
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-button {
+  width: 0px;
+  height: 0px;
+}
+::-webkit-scrollbar-thumb {
+  background: #bbb3b3;
+
+  border: 0px solid #000000;
+  border-radius: 0px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #ffffff;
+}
+::-webkit-scrollbar-thumb:active {
+  background: #000000;
+}
+::-webkit-scrollbar-track {
+  background: #c7cace;
+
+  border: 0px solid #000000;
+  border-radius: 0px;
+}
+::-webkit-scrollbar-track:hover {
+  background: #666666;
+}
+::-webkit-scrollbar-track:active {
+  background: #333333;
+}
+::-webkit-scrollbar-corner {
+  background: transparent;
+}

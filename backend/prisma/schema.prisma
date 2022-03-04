@@ -1,0 +1,84 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model admin {
+  id   Int    @id @default(autoincrement())
+  name String @db.VarChar(80)
+  pass Int
+}
+
+model email {
+  id        Int      @id @default(autoincrement())
+  assunto   String   @db.VarChar(200)
+  titulo    String   @db.VarChar(200)
+  criado_em DateTime @default(now())
+}
+
+model grupo_usuario {
+  id   Int    @id @default(autoincrement())
+  nome String @db.VarChar(60)
+}
+
+model notificacao {
+  id         Int      @id @default(autoincrement())
+  titulo     String   @db.VarChar(200)
+  mensagem   String   @db.VarChar(255)
+  enviado_em DateTime @default(now())
+}
+
+model publicacao {
+  id                Int      @id @default(autoincrement())
+  f_id_menu         Int?
+  f_id_assunto      Int?
+  f_id_tags         String?  @db.VarChar(20)
+  titulo            String   @db.VarChar(200)
+  subtitulo         String   @db.Text
+  data_publicacao   DateTime @default(now())
+  video             String?  @db.VarChar(200)
+  conteudo_especial Boolean  @default(false)
+  tela_inicial      Boolean  @default(true)
+  data_deadline     DateTime @default(now())
+  html              String?  @db.Text
+  url               String?  @db.VarChar(200)
+  imagem            String?  @db.VarChar(200)
+  arquivo           String?  @db.VarChar(200)
+  tipo              String?  @default("HTML") @db.VarChar(60)
+  oculto            Boolean  @default(false)
+}
+
+model usuario {
+  id          Int      @id @default(autoincrement())
+  email       String   @unique(map: "usuarios_email_key") @db.VarChar(60)
+  nome        String   @db.VarChar(60)
+  senha       String   @db.VarChar(32)
+  cpf         String   @db.VarChar(14)
+  telefone    String   @db.VarChar(15)
+  ogranizacao String   @db.VarChar(60)
+  permissao   String   @default("Usuário") @db.VarChar(32)
+  criado_em   DateTime @default(now())
+  app         Boolean
+}
+
+model assunto {
+  id         Int    @id @default(autoincrement())
+  f_id_admin Int
+  nome       String @db.VarChar(60)
+  cor        String @db.VarChar(18)
+}
+
+model menu {
+  id        Int    @id @default(autoincrement())
+  nome      String @db.VarChar(60)
+  descricao String @db.Text
+}
+
+model tag {
+  id   Int    @id @default(autoincrement())
+  nome String @db.VarChar(60)
+}

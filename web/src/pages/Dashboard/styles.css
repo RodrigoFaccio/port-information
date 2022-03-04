@@ -1,0 +1,6 @@
+.dashboardContainer {
+ 
+    background-color: #fff;
+    min-height: 100vh; /* minimum height of page would be equal to available view-port height */
+  
+}
