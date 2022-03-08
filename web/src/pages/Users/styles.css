@@ -20,14 +20,9 @@ table {
 .table {
   padding-top: 20px;
 }
-.divider {
-  width: 1000px;
-  height: 2px;
-  background-color: #eae9e9;
-  position: absolute;
-}
-.tdHtml {
-  background-color: #36a3f7;
+
+.tdSim {
+  background-color: #34bfa3;
 
   border-radius: 50px;
 
@@ -35,12 +30,16 @@ table {
 
   height: 10px;
 }
-.tdBoletins {
-  background-color: #ffb822;
+.tdNao {
+  background-color: rgb(230, 84, 84);
 
   border-radius: 50px;
 
   color: white;
 
   height: 10px;
+}
+.LPAY {
+  background-color: #eaeaea;
+  border-radius: 50px;
 }

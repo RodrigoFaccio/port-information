@@ -1,21 +1,21 @@
 import { useEffect, useState } from 'react'
-import { useSidebar } from '../contexts/NavbarContext'
-import api from '../services/api'
+import { useSidebar } from '../../contexts/NavbarContext'
+import api from '../../services/api';
 import { VscGear } from "react-icons/vsc";
 import { IoEyeSharp } from "react-icons/io5"
 import { FaRegFileArchive } from "react-icons/fa"
 
 
-import './News.css'
+import './styles.css'
 
-function News() {
+function Users() {
   const { sidebar } = useSidebar(false)
   console.log(sidebar)
 const [news,setNews] = useState([])
   useEffect(() => {
 
     async function requestNews(){
- const { data } = await api.get('/news')
+ const { data } = await api.get('/users')
     setNews(data)
     console.log(data)
 
@@ -27,17 +27,19 @@ const [news,setNews] = useState([])
   return (
     <div className={sidebar ? 'pageContainer' : 'pageContainer expanded'}>
       <div className="pageContent">
-        <h1>Publicações</h1>
+        <h1>Usuários</h1>
         <table className='table'>
            <tr className='trTable'>
               <td>Id</td>
-              <td>Titulo</td>
-              <td>Assunto</td>
-              <td>Data</td>
-                  <td>Tipo</td>
-              <td>Exibicao</td>
-                  <td>Arquivos</td>
+            <td>Nome</td>
+              <td>Empresa</td>
+            
+              <td>Contato</td>
+              <td>Cadastro em</td>
+                  <td>App</td>
+              <td>Tipo</td>
             <td>Ações</td>
+            
             
           </tr>
 
@@ -50,13 +52,14 @@ const [news,setNews] = useState([])
                   
                   <td>{item.id}</td>
 
-                  <td style={{fontWeight:'bold',color:'black'}}>{item.titulo}</td>
-                  <td style={{fontWeight:'initial'}}>Port information</td>
-                  <td style={{fontWeight:'bold',color:'black'}}>04/03/2022</td>
-                  <td className={item.html?'tdHtml':'tdBoletins'} >{item.html ? 'HTML' : 'BOLETIM'}</td>
-                  <td className={item.oculto===1?'tdHtml':'tdBoletins'} >{item.oculto === 1 ? 'OCULTO' : 'EM EXIBIÇÃO'}</td>
-                  <td>{item.arquivo&&(<FaRegFileArchive/>) }</td>
-                  <td className='tableClick'><VscGear onClick={()=>alert('Configurar')}/> <IoEyeSharp onClick={()=>alert('Ver news')}/></td>
+                  <td >{item.nome}</td>
+                  <td >{ item.ogranizacao}</td>
+                  <td >{ item.telefone}</td>
+                  <td  >{ item.criado_em}</td>
+                  <td className={item.app === true ? 'tdSim' : 'tdNao'} >{item.app===true?'SIM':'NÃO' }</td>
+                  <td className={'LPAY'} >LPAY</td>
+                  
+                  <td className='tableClick'><VscGear onClick={()=>alert('Configurar')}/> </td>
                   
                   
                   
@@ -78,4 +81,4 @@ const [news,setNews] = useState([])
   );
 }
 
-export default News;
+export default Users;

@@ -10,6 +10,7 @@ import NewNews from "./pages/NewNews"
 import Tags from "./pages/Tags"
 import Topics from "./pages/Topics"
 import Menus from "./pages/Menus"
+import Users from './pages/Users'
 
 export default function AppRoutes() {
 
@@ -25,6 +26,8 @@ export default function AppRoutes() {
             <Route path="/dashboard/tags" element={<Tags />} />
             <Route path="/dashboard/topics" element={<Topics />} />
             <Route path="/dashboard/menus" element={<Menus />} />
+            <Route path="/dashboard/users" element={<Users />} />
+
           </Route>
         </Routes>
       </BrowserRouter>

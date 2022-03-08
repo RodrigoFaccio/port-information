@@ -78,19 +78,7 @@ function Navbar() {
                   )
                 })}
 
-                <li className={sidebar ? 'sidebarTopics' : 'sidebarTopics hidden'}>
-                  <span>{sidebar ? 'EMAILS' : '...'}</span>
-                </li>
-                {SidebarEmailsData.map((item, index) => {
-                  return (
-                    <li key={index} className='nav-text'>
-                      <Link to={`/dashboard${item.path}`}>
-                        {item.icon}
-                        <span>{item.title}</span>
-                      </Link>
-                    </li>
-                  )
-                })}
+                
 
                 <li className={sidebar ? 'sidebarTopics' : 'sidebarTopics hidden'}>
                   <span>{sidebar ? 'NOTIFICAÇÕES' : '...'}</span>
