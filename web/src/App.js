@@ -1,11 +1,15 @@
 import AppRoutes from './routes'
 
 import './App.css'
+import StoreProvider from './contexts/Provider';
 
 
 function App() {
   return (
-    <AppRoutes />
+    <StoreProvider>
+      <AppRoutes />
+    </StoreProvider>
+      
   );
 }
 

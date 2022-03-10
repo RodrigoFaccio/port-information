@@ -1,36 +1,38 @@
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
-
+import React,{useContext} from 'react'
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+import NavBar from "./components/Navbar";
+import Login from "./pages/Login";
+import LoginContext from './contexts/LoginContext'
 import SidebarProvider from './contexts/NavbarContext'
+// @ts-ignore
+const PrivateRoute = ({ children, redirectTo }) => {
 
-import Login from './pages/Login'
-import Navbar from './components/Navbar'
-import Initial from "./pages/Initial"
-import News from "./pages/News"
-import NewNews from "./pages/NewNews"
-import Tags from "./pages/Tags"
-import Topics from "./pages/Topics"
-import Menus from "./pages/Menus"
-import Users from './pages/Users'
+  const { token,setToken } = useContext(LoginContext)
 
-export default function AppRoutes() {
 
+  const isAuthenticated = token;
+  console.log("isAuth: ", token);
+  return isAuthenticated ? children : <Navigate to={redirectTo} />;
+};
+
+function App() {
   return (
     <SidebarProvider>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Login />} />
-          <Route path="/dashboard" element={<Navbar />}>
-            <Route path="/dashboard/initial" element={<Initial />} />
-            <Route path="/dashboard/news" element={<News />} />
-            <Route path="/dashboard/newNews" element={<NewNews />} />
-            <Route path="/dashboard/tags" element={<Tags />} />
-            <Route path="/dashboard/topics" element={<Topics />} />
-            <Route path="/dashboard/menus" element={<Menus />} />
-            <Route path="/dashboard/users" element={<Users />} />
-
-          </Route>
-        </Routes>
+    <BrowserRouter>
+      <Routes>
+        <Route
+          path="/dashboard"
+          element={
+            <PrivateRoute redirectTo="/">
+              <NavBar />
+            </PrivateRoute>
+          }
+        />
+        <Route path="/" element={<Login />} />
+      </Routes>
       </BrowserRouter>
-    </SidebarProvider >
-  )
+      </SidebarProvider>
+  );
 }
+
+export default App;

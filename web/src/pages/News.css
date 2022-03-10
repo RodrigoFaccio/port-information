@@ -24,7 +24,6 @@ table {
   width: 1000px;
   height: 2px;
   background-color: #eae9e9;
-  position: absolute;
 }
 .tdHtml {
   background-color: #36a3f7;
@@ -43,4 +42,6 @@ table {
   color: white;
 
   height: 10px;
+}
+.trBorder {
 }

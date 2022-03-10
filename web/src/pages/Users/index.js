@@ -46,7 +46,6 @@ const [news,setNews] = useState([])
           {
             news.map(item => (
               <>
-            <div className="divider" />
                 
                 <tr>
                   
